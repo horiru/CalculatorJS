@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Learn JavaScript</title>
+        <script type="text/javascript">
+        function check(input){
+            var val = input.value;
+            var num = parseFloat(val);
+            if(Number.isNaN(num) && num != null){
+                document.getElementById("info-bar").innerHTML = "enter number";
+                return false;
+            } else {
+                document.getElementById("info-bar").innerHTML = "";
+                return true;
+            }
+        }
+        function calcul(){
+            var result;
+            var val1 = new Number(parseFloat(document.calculator.val1.value));
+            var val2 = new Number(parseFloat(document.calculator.val2.value));
+            var operator = document.getElementById("myOperator").value;
+            switch(operator){
+                case "add":
+                result = val1 + val2;
+                break;
+                case "min":
+                result = val1 - val2;
+                break;
+                case "div":
+                result = val1 / val2;
+                break;
+                case "time":
+                result = val1 * val2;
+                break;
+            }
+            document.getElementById("info-bar").innerHTML = "The Result is : " + result;
+            return;
+        } 
+        </script>
+    </head>
+    <body>
+        <form name="calculator">
+            <input type="text" name="val1" oninput="check(this)"/>
+            <input type="text" name="val2" oninput="check(this)"/>
+            <select id="myOperator">
+                <option selected value="add">+</option>
+                <option value="min">-</option>
+                <option value="div">/</option>
+                <option value="time">*</option>
+            </select> 
+            <input type="button" value="click" onclick="return calcul();"/>
+        </form>
+        Info : <div id="info-bar"></div>
+    </body>
+</html>
